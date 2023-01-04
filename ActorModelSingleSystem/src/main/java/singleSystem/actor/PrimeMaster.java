@@ -13,11 +13,11 @@ import java.util.List;
 
 public class PrimeMaster extends UntypedActor {
 
-    // Anzahl der Worker
+    // Number of workers
     private static final int WORKER_COUNT = 12;
 
     private final List<Long> primeResults = new ArrayList<>();
-    // Anzahl der erhaltenen Ergebnisse
+    // Number of received results
     private int resultCount = 0;
 
 

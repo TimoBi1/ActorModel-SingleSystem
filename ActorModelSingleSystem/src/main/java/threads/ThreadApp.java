@@ -8,9 +8,9 @@ public class ThreadApp {
 
         ThreadCoordinator coordinator = new ThreadCoordinator();
 
-//        coordinator.startThreads(new SegmentMessage(0, 100));
+        coordinator.startThreads(new SegmentMessage(0, 500000));
 
-        coordinator.startThreads(new SegmentMessage(0, 4000));
+//        coordinator.startThreads(new SegmentMessage(0, 2000000));
 
     }
 

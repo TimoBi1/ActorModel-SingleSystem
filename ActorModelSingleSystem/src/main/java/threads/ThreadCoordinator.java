@@ -14,7 +14,7 @@ public class ThreadCoordinator {
     private static final int THREAD_COUNT = 12;
 
     private final List<Long> primeResults = new ArrayList<>();
-    // Anzahl der erhaltenen Ergebnisse
+    // Number of recieved results
     private int resultCount = 0;
 
     // List where all started threads should be added to
@@ -48,16 +48,24 @@ public class ThreadCoordinator {
             checkThreads();
         }
 
-
-
     }
 
+    /***
+     * Created a thread based on the given name and segmentMessage obj
+     * @param name
+     * @param sm
+     * @return
+     */
     private WorkerThread createThread(String name, SegmentMessage sm) {
 
         return new WorkerThread(name, sm);
 
     }
 
+    /***
+     * starts the thread by the given name
+     * @param name
+     */
     private void startThread(String name) {
 
         threadList.forEach( thread -> {
@@ -68,10 +76,14 @@ public class ThreadCoordinator {
 
     }
 
-    // check all threads
-    // if terminated, remove thread from list
+    /***
+     * check all threads
+     * if terminated, remove thread from list
+     */
     private void checkThreads() {
     	
+    	// temporary list to save all threads that can be removed as they are finished.
+    	// it's possible that there are more than one threads finished when calling this method
         List<WorkerThread> toRemove = new ArrayList<>();
 
         threadList.forEach( thread -> {
@@ -100,6 +112,11 @@ public class ThreadCoordinator {
 
     }
 
+    /***
+     * chesk if all segments are done
+     * if so, print all results to a txt file and terminate the program
+     * @throws FileNotFoundException
+     */
     private void checkIfFinished() throws FileNotFoundException {
 
         if (++resultCount >= THREAD_COUNT) {
